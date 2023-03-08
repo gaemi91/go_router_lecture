@@ -1,6 +1,5 @@
-
-
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:go_router_lecture/layout/layout_default.dart';
 
 class RouteHome extends StatelessWidget {
@@ -8,6 +7,18 @@ class RouteHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutDefault(body: Container());
+    return LayoutDefault(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          ElevatedButton(
+            onPressed: () {
+              context.go('/one');
+            },
+            child: const Text('Route One (GO)'),
+          ),
+        ],
+      ),
+    );
   }
 }
