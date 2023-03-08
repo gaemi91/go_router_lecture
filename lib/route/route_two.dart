@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:go_router_lecture/layout/layout_default.dart';
 
 class RouteTwo extends StatelessWidget {
@@ -6,6 +7,18 @@ class RouteTwo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutDefault(body: Container());
+    return LayoutDefault(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          ElevatedButton(
+            onPressed: () {
+              context.pop();
+            },
+            child: const Text('pop!'),
+          )
+        ],
+      ),
+    );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:go_router_lecture/layout/layout_default.dart';
 
 class RouteOne extends StatelessWidget {
@@ -8,7 +9,15 @@ class RouteOne extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutDefault(
       body: Column(
-        children: [],
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          ElevatedButton(
+            onPressed: () {
+              context.pop();
+            },
+            child: const Text('pop!'),
+          )
+        ],
       ),
     );
   }
