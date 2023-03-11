@@ -1,55 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:go_router_lecture/route/route_error.dart';
-import 'package:go_router_lecture/route/route_home.dart';
-import 'package:go_router_lecture/route/route_one.dart';
-import 'package:go_router_lecture/route/route_three.dart';
-import 'package:go_router_lecture/route/route_two.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router_lecture/provider/provider_auth.dart';
 
 void main() {
-  runApp(const _App());
+  runApp(
+    const ProviderScope(
+      child: _App(),
+    ),
+  );
 }
 
-class _App extends StatelessWidget {
+class _App extends ConsumerWidget {
   const _App({Key? key}) : super(key: key);
 
-  GoRouter get _router => GoRouter(
-        initialLocation: '/',
-        errorBuilder: (context, state) {
-          return RouteError(error: state.error.toString());
-        },
-        routes: [
-          GoRoute(
-            path: '/',
-            builder: (context, state) => const RouteHome(),
-            routes: [
-              GoRoute(
-                path: 'one',
-                builder: (context, state) => const RouteOne(),
-                routes: [
-                  GoRoute(
-                    path: 'two',
-                    builder: (context, state) => const RouteTwo(),
-                    routes: [
-                      GoRoute(
-                        path: 'three',
-                        name: RouteThree.routeName,
-                        builder: (context, state) => const RouteThree(),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ],
-      );
-
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final router = ref.watch(providerRouter);
+
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      routerConfig: _router,
+      routerConfig: router,
     );
   }
 }

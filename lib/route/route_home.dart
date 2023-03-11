@@ -30,6 +30,12 @@ class RouteHome extends StatelessWidget {
             },
             child: const Text('Route Error (GO)'),
           ),
+          ElevatedButton(
+            onPressed: () {
+              context.go('/login');
+            },
+            child: const Text('Route LogIn (GO)'),
+          ),
         ],
       ),
     );
