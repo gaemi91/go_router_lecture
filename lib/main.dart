@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:go_router_lecture/route/route_error.dart';
 import 'package:go_router_lecture/route/route_home.dart';
 import 'package:go_router_lecture/route/route_one.dart';
 import 'package:go_router_lecture/route/route_three.dart';
@@ -14,6 +15,9 @@ class _App extends StatelessWidget {
 
   GoRouter get _router => GoRouter(
         initialLocation: '/',
+        errorBuilder: (context, state) {
+          return RouteError(error: state.error.toString());
+        },
         routes: [
           GoRoute(
             path: '/',

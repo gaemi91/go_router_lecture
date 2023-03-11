@@ -24,6 +24,12 @@ class RouteHome extends StatelessWidget {
             },
             child: const Text('Route Three (GO)'),
           ),
+          ElevatedButton(
+            onPressed: () {
+              context.go('/error');
+            },
+            child: const Text('Route Error (GO)'),
+          ),
         ],
       ),
     );
