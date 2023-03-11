@@ -13,7 +13,7 @@ final providerRouter = Provider<GoRouter>((ref) {
   final stateProviderAuth = ChangeNotifierAuth(ref: ref);
 
   return GoRouter(
-    initialLocation: '/',
+    initialLocation: '/login',
     errorBuilder: (context, state) {
       return RouteError(error: state.error.toString());
     },
